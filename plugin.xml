@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.console.consolePageParticipants">
+      <consolePageParticipant
+            class="com.phan.canooeclipse.ui.console.ConsolePageParticipant"
+            id="com.phan.canooeclipse.config.consoleParticipant">
+         <enablement>
+            <instanceof
+                  value="com.phan.canooeclipse.ui.console.Console">
+            </instanceof></enablement>
+      </consolePageParticipant>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.ui.category.edit"
+            defaultHandler="com.phan.canooeclipse.command.handler.Handler"
+            id="com.phan.canooeclipse.config.executeCommand"
+            name="Execute as Canoo test case">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.phan.canooeclipse.config.executeToolbar"
+               label="Execute Toolbar">
+            <command
+                  commandId="com.phan.canooeclipse.config.executeCommand"
+                  icon="/resources/icons/16x16.png"
+                  id="com.phan.canooeclipse.config.executeCommand"
+                  label="Execute as Canoo test case"
+                  mode="FORCE_TEXT"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activePartId">
+                     <equals
+                           value="org.eclipse.ant.ui.internal.editor.AntEditor">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.console.consoleFactories">
+      <consoleFactory
+            class="com.phan.canooeclipse.ui.console.ConsoleFactory"
+            label="CanooEclipse Console">
+      </consoleFactory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="com.phan.canooeclipse.config.wizardCategory"
+            name="Canoo">
+      </category>
+      <wizard
+            category="com.phan.canooeclipse.config.wizardCategory"
+            class="com.phan.canooeclipse.wizard.CustomWizard"
+            finalPerspective="org.eclipse.jdt.ui.JavaPerspective"
+            icon="/resources/icons/16x16.png"
+            id="com.phan.canooeclipse.config.wizardProject"
+            name="Canoo Project"
+            project="true">
+      </wizard>
+   </extension>
+
+</plugin>

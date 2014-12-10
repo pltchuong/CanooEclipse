@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="AllTests" default="wt.full" basedir=".">
+
+  <import file="${webtest.home}/webtest.xml"/>
+
+  <property name="wt.config.resultpath" value="${project.home}/tmp/webtest-results"/>
+  <property name="wt.config.host" value="${host}" />
+  <property name="wt.config.port" value="${port}" />
+  <property name="wt.config.basepath" value="${context}" />  
+  <property name="wt.config.option.ThrowExceptionOnScriptError" value="false" />
+	
+  <property name="wt.testInWork" value="${webtest.testdir}/${webtest.testfile}"/>
+  <property name="wt.webtestMonitor.skip" value="true" />
+  <property name="wt.countWebtestResults.failIfFailedTest" value="false" />
+
+</project>

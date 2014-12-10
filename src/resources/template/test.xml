@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<project>
+  <webtest name="test-case-name">
+  	<invoke url="http://${host}:${port}/${context}"/>
+    <verifyTitle description="Title can include variable user name" text="BBC News - Home" />
+  </webtest>
+</project>
